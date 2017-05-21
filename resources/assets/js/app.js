@@ -15,10 +15,18 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ var data = {
+   message : 'Hello my data'
+ };
+
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('test', require('./components/Test.vue'));
+Vue.component('topics', require('./components/Topics.vue'));
 Vue.component('big', {
-  template: '<h1>This is big</h1>'
+  template: '<h1>{{message}}</h1>',
+  data:function(){
+    return data
+  }
 });
 
 const app = new Vue({

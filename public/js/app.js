@@ -842,15 +842,22 @@ window.Vue = __webpack_require__(40);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+var _data = {
+  message: 'Hello my data'
+};
+
 Vue.component('example', __webpack_require__(36));
 Vue.component('test', __webpack_require__(37));
+Vue.component('topics', __webpack_require__(52));
 Vue.component('big', {
-  template: '<h1>This is big</h1>'
+  template: '<h1>{{message}}</h1>',
+  data: function data() {
+    return _data;
+  }
 });
 
 var app = new Vue({
-  el: '#app',
-  names: ["abdullah", "ahmad", "sulaiman", "xaydar"]
+  el: '#app'
 });
 
 /***/ }),
@@ -1751,9 +1758,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    //
+
+    data: function data() {
+        return {
+            skills: []
+        };
+    },
     mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/topics').then(function (response) {
+            return _this.skills = response.data;
+        });
         console.log('Component mounted.');
     }
 });
@@ -31814,8 +31837,6 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "container"
   }, [_c('div', {
@@ -31828,8 +31849,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_vm._v("Test Component")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_vm._v("\n                  I am a testing component\n                ")])])])])])
-}]}
+  }, [_vm._v("\n                  I am a testing component\n                  "), _c('ol', _vm._l((_vm.skills), function(skill) {
+    return _c('li', [_vm._v(_vm._s(skill))])
+  }))])])])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -41600,6 +41623,117 @@ module.exports = function(module) {
 __webpack_require__(9);
 module.exports = __webpack_require__(10);
 
+
+/***/ }),
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    //
+
+    data: function data() {
+        return {
+            topics: []
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/topics').then(function (response) {
+            return _this.topics = response.data;
+        }), axios.get('/topics').then(function (response) {
+            return console.log(response.data);
+        }), console.log('Component mounted.');
+    }
+});
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(7)(
+  /* script */
+  __webpack_require__(51),
+  /* template */
+  __webpack_require__(53),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\laravelSites\\arabicApp\\resources\\assets\\js\\components\\Topics.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Topics.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-88b8003e", Component.options)
+  } else {
+    hotAPI.reload("data-v-88b8003e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-8 col-md-offset-2"
+  }, [_c('div', {
+    staticClass: "list-group"
+  }, _vm._l((_vm.topics), function(topic) {
+    return _c('a', {
+      staticClass: "list-group-item"
+    }, [_c('h4', {
+      staticClass: "list-group-item-heading"
+    }, [_vm._v(_vm._s(topic.name))]), _vm._v(" "), _c('p', {
+      staticClass: "list-group-item-text"
+    }, [_vm._v(_vm._s(topic.description))])])
+  }))])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-88b8003e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

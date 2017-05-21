@@ -24,6 +24,35 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Type ID</label>
+
+                            <div class="col-md-6">
+                                <input id="type_id" type="text" class="form-control" name="type_id" value="{{ old('type_id') }}" required>
+
+                                @if ($errors->has('type_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('type_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('institution_id') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Institut </label>
+
+                            <div class="col-md-6">
+                                <input id="institution_id" type="institution_id" class="form-control" name="institution_id" value="{{ old('institution_id') }}" required>
+
+                                @if ($errors->has('institution_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('institution_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
