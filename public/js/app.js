@@ -41658,6 +41658,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
+            isVisible: true,
             topics: []
         };
     },
@@ -41669,6 +41670,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }), axios.get('/topics').then(function (response) {
             return console.log(response.data);
         }), console.log('Component mounted.');
+    },
+
+    methods: {
+        disp: function disp() {
+            this.isVisible = false;
+            alert(this.topics[0].topics[0].name);
+        }
     }
 });
 
@@ -41719,7 +41727,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "list-group"
   }, _vm._l((_vm.topics), function(topic) {
     return _c('a', {
-      staticClass: "list-group-item"
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (_vm.isVisible),
+        expression: "isVisible"
+      }],
+      staticClass: "list-group-item",
+      on: {
+        "click": _vm.disp
+      }
     }, [_c('h4', {
       staticClass: "list-group-item-heading"
     }, [_vm._v(_vm._s(topic.name))]), _vm._v(" "), _c('p', {
